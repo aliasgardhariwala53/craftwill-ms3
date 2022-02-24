@@ -77,7 +77,7 @@ export class SignupComponent implements OnInit {
     });
 
     this.userRegistration.valueChanges.subscribe(() => {
-      passwordValidation.match('password', 'confirmPassword')
+      
       this.formErrors = valueChanges(
         this.userRegistration,
         { ...this.formErrors },
@@ -85,6 +85,7 @@ export class SignupComponent implements OnInit {
       );
     });
     this.accountDetails.valueChanges.subscribe(() => {
+      passwordValidation.match('password', 'confirmPassword')
       this.formErrors = valueChanges(
         this.accountDetails,
         { ...this.formErrors },
