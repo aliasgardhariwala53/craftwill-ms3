@@ -77,6 +77,7 @@ export class SignupComponent implements OnInit {
     });
 
     this.userRegistration.valueChanges.subscribe(() => {
+      passwordValidation.match('password', 'confirmPassword')
       this.formErrors = valueChanges(
         this.userRegistration,
         { ...this.formErrors },
