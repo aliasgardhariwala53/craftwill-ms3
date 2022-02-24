@@ -317,6 +317,7 @@ export class ProfileComponent implements OnInit {
           Citizenship,
           id_country,
           dob,
+          profileImage,
         }) => ({
           id_type,
           id_number,
@@ -332,6 +333,7 @@ export class ProfileComponent implements OnInit {
           Citizenship,
           id_country,
           dob,
+          profileImage,
         }))(result.data);
         this.setImageHandler(result);
 
