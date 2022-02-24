@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
       postalCode: [''],
       id_country: [''],
       dob: [''],
-      Citizenship: [''],
+      Citizenship: [],
       profileImage: [''],
     });
     this.passwordForm = this._fb.group(
