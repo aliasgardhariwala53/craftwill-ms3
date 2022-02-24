@@ -1,0 +1,604 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$my-app-primary: mat.define-palette(mat.$indigo-palette);
+$my-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$my-app-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$my-app-theme: mat.define-light-theme((
+  color: (
+    primary: $my-app-primary,
+    accent: $my-app-accent,
+    warn: $my-app-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($my-app-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import '~ngx-toastr/toastr';
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+*{
+  font-family: 'Gilroy';
+}
+body{
+  overflow: hidden;
+}
+@font-face {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Gilroy'), url('./assets/fonts/Gilroy/gilroy-medium.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'GilroySemi';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Gilroy'), url('./assets/fonts/Gilroy/gilroy-semi-bold.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'GilroyBold';
+    font-style: normal;
+    font-weight: bolder;
+    src: local('Gilroy'), url('./assets/fonts/Gilroy/gilroy-bold.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Gilroy'), url('./assets/fonts/Gilroy/gilroy-regular.ttf') format('truetype');
+  }
+  @media only screen and (max-width: 600px) {
+    html,
+    body {
+      font-size: 16px;
+      font-family: 'Gilroy';
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+  }
+  @media only screen and (min-width: 600px) {
+    html,
+    body {
+      font-family: 'Gilroy';
+      font-size: 16px;
+    }
+  }
+  
+  @media only screen and (min-width: 768px) {
+    html,
+    body {
+      font-family: 'Gilroy';
+      font-size: 16px;
+    }
+  }
+  
+  @media only screen and (min-width: 992px) {
+    html,
+    body {
+      font-family: 'Gilroy';
+      font-size: 16px;
+    }
+  }
+  .bg-red{
+   background-color: #ff6782;
+   color:white;
+  }
+  .text-red{
+    color: #ff6782 !important;
+
+  }
+  .bg_grey{
+    background-color: #F7F7F7 !important;
+
+  }
+  
+.form-group {
+  margin-bottom: 0.8rem;
+  font-weight: bold;
+  font-family: "Gilroy";
+}
+.input-group1 {
+  display: inline-block;
+  width: 100%;
+
+  .radio_image {
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+  .input_label {
+    font-weight: lighter;
+    color: #8d8d8d;
+    margin-bottom: 0.1rem;
+  }
+}
+.authinput {
+  width: 100%;
+  background: rgb(247, 247, 247);
+  border-radius: 22px;
+ 
+  font-size: 0.8rem;
+  padding: 20px;
+  
+
+  height: calc(1.5em + 0.75rem + 2px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-clip: padding-box;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+}
+.authinput:focus {
+  outline: none;
+  box-shadow: none;
+}
+::placeholder {
+  font-weight: 500;
+  font-family: 'GilroySemi';
+}
+.errors {
+  font-size: 12px;
+}
+.createMember_btn {
+  background: #ff6782 0% 0% no-repeat padding-box;
+
+  color: #fff;
+  align-items: center;
+  
+  font-family: "Gilroy";
+  text-align: left;
+}
+// radio bn
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  line-height: 20px;
+  display: inline-block;
+  color: #666;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ff6782;
+  border-radius: 100%;
+  background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+  content: '';
+ 
+  width: 12px;
+  height: 12px;
+  background: #ff6782;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border-radius: 100%;
+  transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: #ff6782;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    display: none;
+  }
+
+}
+.drop_shadow{
+  box-shadow: 0px 0px 11px #00000012;
+
+}
+
+
+.ng-select.custom ::ng-deep .ng-select-container .ng-value-container .ng-placeholder {            
+  background-color: #67ff7b;  
+  font-size: 100px;
+  min-height: 0px;
+  border-radius: 0;
+}
+.ng-select .ng-select-container .ng-value-container .ng-input>input
+{
+
+  padding-left :3px !important;
+}
+.ng-select .ng-select-container .ng-value-container .ng-placeholder{
+  padding-left :7px ;
+}
+.ng-select.ng-select-single .ng-select-container .ng-value-container, .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value{
+padding-left :7px ;
+}
+
+
+.custom-selector .ng-select-container {
+  // background: #f7f7f7;
+  font-weight: 400;
+}
+
+.custom-selector .ng-dropdown-panel {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  border-radius: 0 0 10px 10px;
+  outline: none;
+  border: none;
+}
+.custom-selector .ng-dropdown-panel .ng-dropdown-panel-items {
+padding: 10px 5px 10px 5px;
+  border-radius: 0 0 10px 10px;
+  background-color: #F7F7F7;
+}
+.custom-selector .ng-dropdown-panel .ng-dropdown-panel-items div {
+ width: 100%;
+
+ font-size: 'GilroySemi';
+ background-color: #F7F7F7;
+ font-weight: 500;
+ :hover{
+   border-radius: 10px;
+   color: #fff;
+  background: #FF6782 !important;
+ }
+}
+.custom-selector .ng-dropdown-panel .ng-dropdown-panel-items div .ng-option-selected{
+ width: 100%;
+font-weight: 400;
+ border-radius: 10px;
+ color: #fff;
+ background-color: #FF6782;
+ margin: 5px 0px;
+ :hover{
+   border-radius: 10px;
+   color: #fff;
+  background: #FF6782 !important;
+ }
+}
+.custom-selector .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected, .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked{
+ width: 100%;
+ border-radius: 10px;
+ color: #fff;
+ background-color: #FF6782;
+ margin: 5px 0px;
+ :hover{
+   border-radius: 10px;
+   color: #fff;
+  background: #FF6782 !important;
+ }
+}
+.custom-selector .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked{
+  background: #FF6782 !important;
+  color: #fff;
+  font-weight: 400;
+  border-radius: 10px;
+  // margin: 5px 0px;
+}
+.custom-selector.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected .ng-option-label, .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked .ng-option-label{
+font-weight: 400;
+color:#fff;
+}
+
+.custom-selector .ng-select-container .ng-input{
+  // background: #f7f7f7;
+}
+.custom-selector .ng-select-container .ng-placeholder{
+  
+}
+.custom-selector .ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container{
+  // border: none;
+}
+.ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container{
+  border-color: #ccc !important;
+  border: 1px solid #ccc !important;
+  box-shadow: none;
+}
+.ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container{
+
+}
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected .ng-option-label, .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked .ng-option-label{
+  font-weight: 400;
+}
+
+.ng-select{
+  outline: none;
+  border: none;
+  :focus{
+    outline: none;
+    border: none;
+  }
+}
+.custom .ng-select-container {
+  background: #f7f7f7;
+  outline: none;
+border: none;
+border-radius: 10px;
+}
+.custom.ng-select.ng-select-opened>.ng-select-container {
+  
+  background: #f7f7f7;
+}
+.custom.ng-select .ng-select-opened.ng-select-bottom>.ng-select-container {
+  
+  background: #f7f7f7 !important;
+}
+
+.custom.ng-select.ng-select-single .ng-select-container{
+  height: 40px;
+}
+.custom.ng-dropdown-panel .ng-dropdown-panel-items{
+  padding: 10px 0 10px 0;
+}
+.custom.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input{
+  padding-left: 10px;
+}
+// profile
+.profile .ng-select-container {
+  background: #f0f0f0;
+  outline: none;
+border: none;
+border-radius: 10px;
+}
+.members .ng-select-container {
+  background: #f0f0f0;
+  outline: none;
+border: none;
+border-radius: 10px;
+}
+
+.profile.ng-select.ng-select-opened>.ng-select-container {
+  
+  background: #ddd;
+}
+
+.profile.ng-select .ng-select-opened.ng-select-bottom>.ng-select-container {
+  
+  background: #ddd !important;
+}
+.profile.ng-select.ng-select-disabled>.ng-select-container{
+  background-color: #ddd;
+  cursor:not-allowed;
+}
+@media only screen and (max-width: 640px) {
+  .profile.ng-select.ng-select-disabled>.ng-select-container{
+    background-color: #fff;
+    cursor:not-allowed;
+  }
+}
+.ng-select-disabled{
+  
+  cursor:not-allowed;
+}
+.profile.ng-select.ng-select-single .ng-select-container{
+  height: 40px;
+}
+// .profile .ng-dropdown-panel .ng-dropdown-panel-items {
+//   padding: 10px 5px 10px 5px;
+//     border-radius: 0 0 10px 10px;
+//     background-color: #ddd;
+//   }
+// .profile .ng-dropdown-panel .ng-dropdown-panel-items >div{
+//     background-color: #ddd;
+//   }
+.ng-select div, .ng-select input, .ng-select span{
+  font-family: 'GilroySemi' !important;
+  font-weight: 400;
+  color: #000;
+}
+.members.ng-select .ng-select-opened.ng-select-bottom>.ng-select-container {
+  
+  background: #ddd !important;
+}
+.members.ng-select-container {
+  background: #f7f7f7;
+  outline: none;
+border: none;
+border-radius: 10px;
+}
+.members.ng-select.ng-select-opened>.ng-select-container {
+  
+  background: #f7f7f7;
+}
+.members.ng-select.ng-select-single .ng-select-container{
+  background: #f7f7f7;
+  height: 40px;
+}
+.white.ng-select.ng-select-single .ng-select-container{
+  
+  height:45px;
+}
+.white
+//profile image preview m-auto 
+.img_cropper > div> img{
+  margin: auto;
+}
+
+.custom-selector{
+  .ng-dropdown-panel {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 0 0 10px 10px;
+    outline: none;
+    border: none;
+  }
+  .ng-dropdown-panel .ng-dropdown-panel-items {
+    padding: 10px 5px 10px 5px;
+      border-radius: 0 0 10px 10px;
+      background-color: #F7F7F7;
+    }
+  .ng-dropdown-panel .ng-dropdown-panel-items div {
+    width: 100%;
+   
+    font-size: 'GilroySemi';
+    background-color: #F7F7F7;
+    font-weight: 500;
+    :hover{
+      border-radius: 10px;
+      color: #fff;
+     background: #FF6782 !important;
+    }
+   }
+  .ng-dropdown-panel .ng-dropdown-panel-items div .ng-option-selected{
+    width: 100%;
+   font-weight: 400;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #FF6782;
+    margin: 5px 0px;
+    :hover{
+      border-radius: 10px;
+      color: #fff;
+     background: #FF6782 !important;
+    }
+   }
+  .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected, .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked{
+    width: 100%;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #FF6782;
+    margin: 5px 0px;
+    :hover{
+      border-radius: 10px;
+      color: #fff;
+     background: #FF6782 !important;
+    }
+   }
+  .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked{
+    background: #FF6782 !important;
+    color: #fff;
+    font-weight: 400;
+    border-radius: 10px;
+    // margin: 5px 0px;
+  }
+  .ng-select-container {
+    outline: none;
+    border: none;
+     border-radius: 10px;
+   }
+   .ng-select.ng-select-single .ng-select-container{
+    height: 40px !important;
+  }
+  // .ng-dropdown-panel .ng-dropdown-panel-items{
+  //   padding: 10px 0 10px 0;
+  // }
+  .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input{
+    padding-left: 10px;
+  }
+
+  
+    .white{
+       .ng-select-container {
+      background: #fff ;
+     }
+    .ng-select.ng-select-opened>.ng-select-container {
+    
+      background: #fff !important;
+    }
+    .ng-select .ng-select-opened.ng-select-bottom>.ng-select-container {
+    
+      background: #fff !important;
+    }
+    .ng-select.ng-select-single .ng-select-container{
+      height: 40px;
+    }
+    .ng-option-label {
+      display: flex !important;
+    }
+    }
+
+ 
+  .custom{
+    .ng-select-container {
+      background: #f7f7f7 ;
+     }
+    .ng-select.ng-select-opened>.ng-select-container {
+    
+      background: #f7f7f7 !important;
+    }
+    .ng-select .ng-select-opened.ng-select-bottom>.ng-select-container {
+    
+      background: #f7f7f7 !important;
+    }
+    
+
+   
+   
+  }
+  .joint{
+    .ng-select.ng-select-single .ng-select-container{
+      height: 50px;
+    }
+  }
+  .ng-option-label {
+    display: flex !important;
+  }
+  .ng-value-label{
+    display: flex !important;
+  }
+ 
+
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

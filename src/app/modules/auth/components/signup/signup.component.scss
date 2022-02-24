@@ -1,0 +1,50 @@
+
+.input-group1 {
+  display: flex;
+  width: 100%;
+  input[type="radio"] {
+    display: none;
+
+
+  }
+  input[type="radio"]:checked ~ img {
+    border-radius: 50%;
+    border: 2px solid #ff6782;
+ 
+  }
+
+  .radio_image {
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid #fff;
+
+  }
+}
+
+::placeholder {
+  font-weight: 500;
+  font-family: 'GilroySemi';
+}
+.ng-select.custom .ng-option.selected {
+  background-color:salmon;
+}
+
+.ng-select.custom {
+    border:0px;
+    min-height: 0px;
+    border-radius: 0;
+}
+.ng-select.custom .ng-select-container  {            
+    min-height: 0px;
+    border-radius: 0;
+    background-color: #ff6782 !important;
+}
+.ng-select.custom .ng-input  {            
+    min-height: 0px;
+    border-radius: 0;
+    background-color: #ff6782;
+}
+.ng-select .ng-select-container .ng-value-container .ng-input>input{
+  background-color: #ff6782 !important;
+}
+
