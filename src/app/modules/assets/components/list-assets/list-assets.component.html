@@ -9,7 +9,7 @@
     <div class="hidden md:block w-1/12 font-extrabold text-xl ml-3">Assets</div>
     <div class="w-3/12 hidden md:flex items-center dropdown cursor-pointer font-semibold">
       <!-- <img  class="inline-block md:mr-2 " src="../../../../assets/Icons/Filter.svg"> -->
-      <svg (click)="toggleModal = true" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 -rotate-90" fill="none"
+      <svg  xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 -rotate-90" fill="none"
         viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
@@ -69,7 +69,7 @@
   
           <div class="bg-[#f7f7f7] px-4 py-3 rounded-[10px] md:hidden cursor-pointer">
 
-      <svg (click)="toggleModal=true" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 -rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg  xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 -rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
       </svg>
 
@@ -81,7 +81,7 @@
   <div (click)="toggleModalTutorial=true"  class="hidden md:w-2/12 justify-end  md:flex text-base text-center">
     <app-button border="border-2 border-black" padding="px-10 py-2" backgroundColor="bg-[#fff]" borderRadius="rounded-xl" color="text-[#000]" value="Tutorial" ></app-button>
   </div>
-  <div (click)="showSearch=!showSearch" class="w-4/12 md:ml-8 md:mr-8 sm:w-fit items-center hidden md:flex cursor-pointer"><img class="ml-auto h-[38px] w-[38px]" src='../../../../../assets/Icons/Group 4361.svg'></div>
+  <div  class="w-4/12 md:ml-8 md:mr-8 sm:w-fit items-center hidden md:flex cursor-pointer"><img class="ml-auto h-[38px] w-[38px]" src='../../../../../assets/Icons/Group 4361.svg'></div>
   <div class="w-12/12 md:w-fit justify-end hidden md:flex text-base text-center">
       <app-button  value="Create New Assets" routelink="/assets/createAssets"></app-button>
     </div>

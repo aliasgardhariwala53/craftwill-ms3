@@ -8,19 +8,19 @@ const routes: Routes = [
     path : "",
     loadChildren : ()=>import("./modules/auth/auth.module").then(m1=>m1.AuthModule)
   },
-  // {
-  //   path : "members",
-  //   loadChildren : ()=>import("./modules/members/members.module").then(m2=>m2.MembersModule)
-  // },
-  // {
-  //   path : "assets",
-  //   loadChildren : ()=>import("./modules/assets/assets.module").then(m2=>m2.AssetsModule)
-  // },
+  {
+    path : "members",
+    loadChildren : ()=>import("./modules/members/members.module").then(m2=>m2.MembersModule)
+  },
+  {
+    path : "assets",
+    loadChildren : ()=>import("./modules/assets/assets.module").then(m2=>m2.AssetsModule)
+  },
   
-  // {
-  //   path : "liabilities",
-  //   loadChildren : ()=>import("./modules/liabilities/liabilities.module").then(m2=>m2.LiabilitiesModule)
-  // },
+  {
+    path : "liabilities",
+    loadChildren : ()=>import("./modules/liabilities/liabilities.module").then(m2=>m2.LiabilitiesModule)
+  },
   // {
   //   path : "will",
   //   loadChildren : ()=>import("./modules/will/will.module").then(m2=>m2.WillModule)
