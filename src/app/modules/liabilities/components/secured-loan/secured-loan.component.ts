@@ -20,10 +20,10 @@ export class SecuredLoanComponent implements OnInit {
   SecuredLoan: FormGroup;
   responseMessage: string;
   backRouteLink="/liabilities/createLiabilities";
-forwardRouteLink="/liabilities";
+  forwardRouteLink="/liabilities";
   id: string='';
   fromCreateWill: string;
-  selectedAssetsId;
+  selectedAssetsId=[];
   toggleModalTutorial: boolean=false;
   constructor(
     private _fb: FormBuilder,
@@ -91,16 +91,10 @@ forwardRouteLink="/liabilities";
     },
   };
   selectAssets(value) {
-    let assetId: Array<any> = this.SecuredLoan.value.assetId;
-    if (assetId.includes(value)) {
-      assetId.splice(assetId.indexOf(value), 1);
-    }
-    else {
-      assetId?.push(value);
-    }
-    this.selectedAssetsId=assetId;
+    console.log(value);
+    
     this.SecuredLoan.patchValue({
-      assetId: assetId,
+      assetId: value.map((el)=>el._id),
     });
 
     console.log(this.SecuredLoan.value.assetId);
@@ -121,9 +115,17 @@ forwardRouteLink="/liabilities";
       return;
     }
     this.spinner.start();
+    const formvalue = {...this.SecuredLoan.value, assetId: this.SecuredLoan.value.assetId.map(el =>{
+      if (el._id) {
+        return el?._id
+        
+      }
+      return el;
+    } 
+    )}
     const securedLoanData = {
     current_Outstanding_Amount:this.SecuredLoan.value.current_Outstanding_Amount,
-      securedLoan: this.SecuredLoan.value,
+      securedLoan: formvalue,
       type:'securedLoan'
       
     };
@@ -148,9 +150,19 @@ forwardRouteLink="/liabilities";
   }
   onUpdateSecuredLoan(){
     this.spinner.start();
+    const formvalue = {...this.SecuredLoan.value, assetId: this.SecuredLoan.value.assetId.map(el =>{
+      if (el._id) {
+        return el?._id
+        
+      }
+      return el;
+    } 
+    )}
+    console.log(formvalue);
+    
     const securedLoanData = {
-      current_Outstanding_Amount:this.SecuredLoan.value.current_Outstanding_Amount,
-        securedLoan: this.SecuredLoan.value,
+        current_Outstanding_Amount:this.SecuredLoan.value.current_Outstanding_Amount,
+        securedLoan: formvalue,
         type:'securedLoan'
         
       };
@@ -177,23 +189,24 @@ forwardRouteLink="/liabilities";
         if (item._id===id) {
           const {securedLoan,current_Outstanding_Amount} = item;
           this.SecuredLoan.patchValue({
-            loanName: securedLoan.loanName,
-            loanProvider: securedLoan.loanProvider,
-            loan_Number: securedLoan.loan_Number,
-            loan_Id_Number: securedLoan.loan_Id_Number,
+            loanName: securedLoan?.loanName,
+            loanProvider: securedLoan?.loanProvider,
+            loan_Number: securedLoan?.loan_Number,
+            loan_Id_Number: securedLoan?.loan_Id_Number,
             current_Outstanding_Amount: current_Outstanding_Amount,
-            description: securedLoan.description,
-            // assetId: securedLoan.assetId,
+            description: securedLoan?.description,
+            assetId: securedLoan?.addAssets?.map((el)=>{
+              return { _id:el};
+            })
           })     
-          this.selectedAssetsId=securedLoan.addAssets;
+          this.selectedAssetsId=securedLoan.addAssets.map((el)=>{
+            return { _id:el};
+          });
           return securedLoan;
         }
         return null;
       })
-      console.log(data);
-      
-
-     
+      console.log(data);  
     },(err)=>{
       this.spinner.stop();
       this.toastr.message(errorHandler(err),false);
@@ -227,6 +240,8 @@ forwardRouteLink="/liabilities";
           image:this.assetsServices.getAssetsData(items)?.img,
         };
       });
+      console.log(this.assetsData);
+      
     },(err)=>{
       this.spinner.stop();
         });
