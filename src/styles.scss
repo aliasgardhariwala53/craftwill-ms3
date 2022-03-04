@@ -32,8 +32,6 @@ $my-app-theme: mat.define-light-theme((
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($my-app-theme);
-
-/* You can add global styles to this file, and also import other style files */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
@@ -219,6 +217,14 @@ body{
   border-radius: 100%;
   transition: all 0.2s ease;
 }
+[type="radio"]:disabled + label:after,
+[type="radio"]:disabled + label:after {
+  background: #ffc4cf;
+}
+[type="radio"]:disabled + label:before,
+[type="radio"]:disabled + label:before {
+  border: 1px solid #ffc4cf;
+}
 [type="radio"]:not(:checked) + label:after {
   opacity: 0;
   -webkit-transform: scale(0);
@@ -228,6 +234,10 @@ body{
   opacity: 1;
   -webkit-transform: scale(1);
   transform: scale(1);
+}
+[type="radio"]:disabled +label {
+cursor: not-allowed;
+
 }
 /* width */
 ::-webkit-scrollbar {
@@ -275,6 +285,7 @@ body{
 .ng-select.ng-select-single .ng-select-container .ng-value-container, .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value{
 padding-left :7px ;
 }
+
 
 
 .custom-selector .ng-select-container {
@@ -400,7 +411,7 @@ border-radius: 10px;
   background: #f0f0f0;
   outline: none;
 border: none;
-border-radius: 10px;
+border-radius: 14px !important;
 }
 .members .ng-select-container {
   background: #f0f0f0;
@@ -414,6 +425,14 @@ border-radius: 10px;
   background: #ddd;
 }
 
+.profile.ng-select.ng-select-single .ng-select-container .ng-value-container, .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value{
+  padding:1px !important;
+}
+@media only screen and (min-width: 600px) {
+  .profile.ng-select.ng-select-single .ng-select-container .ng-value-container, .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value{
+    padding:7px !important;
+  }
+}
 .profile.ng-select .ng-select-opened.ng-select-bottom>.ng-select-container {
   
   background: #ddd !important;
@@ -425,6 +444,7 @@ border-radius: 10px;
 @media only screen and (max-width: 640px) {
   .profile.ng-select.ng-select-disabled>.ng-select-container{
     background-color: #fff;
+    margin-left: -12px;
     cursor:not-allowed;
   }
 }
