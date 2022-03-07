@@ -31,7 +31,7 @@ forwardRouteLink="/liabilities";
   createForm() {
     this.UnSecuredLoan = this._fb.group({
       loanProvider: ['', [Validators.required]],
-      loan_Number: ['', [Validators.required]],
+      loan_Number: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       loan_Id_Number: [
         '',
         [Validators.required, Validators.pattern('^[0-9]*$')],

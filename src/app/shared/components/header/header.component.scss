@@ -196,6 +196,12 @@ cursor: pointer;
       background-color: #FF6782;
       color: #fff;
       fill: #ff6782;
+      :hover{
+        color: #fff;
+        fill:#fff;
+        text-decoration: none;
+        background-color: #FF6782;
+      }
     }
     &:hover{
       color: #fff;
@@ -214,4 +220,7 @@ cursor: pointer;
 }
 .active{
   fill: #ff6782;
+  &:hover{
+    fill:#fff !important;
+  }
 }

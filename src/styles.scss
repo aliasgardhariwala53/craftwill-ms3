@@ -425,14 +425,14 @@ border-radius: 10px;
   background: #ddd;
 }
 
-.profile.ng-select.ng-select-single .ng-select-container .ng-value-container, .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value{
-  padding:1px !important;
-}
-@media only screen and (min-width: 600px) {
-  .profile.ng-select.ng-select-single .ng-select-container .ng-value-container, .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value{
-    padding:7px !important;
-  }
-}
+// .profile.ng-select.ng-select-single .ng-select-container .ng-value-container, .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value{
+//   padding:1px !important;
+// }
+// @media only screen and (min-width: 600px) {
+//   .profile.ng-select.ng-select-single .ng-select-container .ng-value-container, .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value{
+//     padding:7px !important;
+//   }
+// }
 .profile.ng-select .ng-select-opened.ng-select-bottom>.ng-select-container {
   
   background: #ddd !important;
@@ -622,3 +622,10 @@ border-radius: 10px;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+* {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+}
