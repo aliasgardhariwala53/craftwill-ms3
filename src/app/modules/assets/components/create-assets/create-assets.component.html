@@ -173,6 +173,8 @@
         </div>
         <div
           class="drop_shadow rounded-2xl flex-row justify-center px-1 py-2 m-1 cursor-pointer hover:bg-[#FF6782] hover:text-[#fff]"
+       
+          [ngClass]="{ 'bg-[#FF6782] text-white': routepath === 'otherAssets' }"
         >
           <div class="flex justify-center max-h-10">
             <img
