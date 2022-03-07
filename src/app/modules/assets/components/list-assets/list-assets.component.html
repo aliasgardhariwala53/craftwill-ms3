@@ -88,7 +88,7 @@
   </div>
 
   <app-table [tableHeadings]="tableHeadings" avtarType="image" (actionButton)="onClickAction($event)" [tableData]="allAssetsinOne"
-    [keys]="tableKeys" [classes]="classes" emptyTableMessage="No Assets Found">
+    [keys]="tableKeys" [classes]="classes" emptyTableMessage="No Assets Found" class="h-[85%] sm:h-[95%]" >
   </app-table>
   <div class="absolute md:hidden left-0 right-0 bottom-0 bg-white w-[87%] m-auto">
     <app-button [plus]="true" value="Create New Assets" routelink="/assets/createAssets" class="md:hidden"

@@ -74,6 +74,7 @@ export class SecuredLoanComponent implements OnInit {
     },
     loan_Number: {
       required: 'Loan Number is Required',
+      pattern: 'Only numeric values allowed',
     },
     loan_Id_Number: {
       required: 'Loan Id Number is Required',
