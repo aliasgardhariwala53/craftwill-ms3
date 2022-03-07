@@ -1,4 +1,4 @@
-import { FormGroup, ValidatorFn, AbstractControl } from '@angular/forms';
+import { FormGroup, ValidatorFn, AbstractControl, FormControl } from '@angular/forms';
 import {ToastrService}  from 'src/app/shared/services/toastr.service';
 import { ToastrService as toast } from "ngx-toastr";
 export const valueChanges = (form: FormGroup, formErrors, errorMessages): any => {
@@ -82,3 +82,12 @@ export const errorHandler = (error) => {
   }
   return message;
 };
+export class CustomValidators {
+  nameValidator(control: FormControl): { [key: string]: boolean } {
+      const nameRegexp: RegExp = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+      if (control.value && nameRegexp.test(control.value)) {
+         return { invalidName: true };
+      }
+      return null;
+  }
+}
