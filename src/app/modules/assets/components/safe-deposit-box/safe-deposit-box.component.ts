@@ -48,7 +48,7 @@ export class SafeDepositBoxComponent implements OnInit {
   createForm() {
     this.safeDepositboxForm = this._fb.group({
       safe_Box_Location: ['', [Validators.required]],
-      safe_No: ['', [Validators.pattern('^[0-9]*$')]],
+      safe_No: ['', [Validators.pattern('^[0-9]*$'),Validators.maxLength(20)]],
       country: [, [Validators.required]],
       specifyOwnershipType: ['', [Validators.required]],
     });
@@ -73,6 +73,7 @@ export class SafeDepositBoxComponent implements OnInit {
     },
     safe_No: {
       pattern: 'Only numeric values allowed',
+      maxlength: 'Please Enter Valid Number',
     },
     country: {
       required: 'Country is Required',

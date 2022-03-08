@@ -145,13 +145,13 @@ export class MoterVehicleComponent implements OnInit {
         this.spinner.stop();
         if (result.success) {
           const myItem = this.allAssetsBeneficiary.findIndex(
-            (el) => el.type === 'motorVehicle'
+            (el) => el.assetId===this.id
           );
           if (myItem === -1) {
             this.allAssetsBeneficiary.push(...this.assetsBeneficiary);
           } else {
             this.allAssetsBeneficiary = this.allAssetsBeneficiary.filter(
-              (el) => el.type !== 'motorVehicle'
+              (el) => el.assetId!==this.id
             );
             this.allAssetsBeneficiary = [
               ...this.allAssetsBeneficiary,
@@ -160,7 +160,9 @@ export class MoterVehicleComponent implements OnInit {
           }
           console.log(this.allAssetsBeneficiary);
 
-          this._willServices.assetsBeneficiary.next(this.allAssetsBeneficiary);
+       if (this.fromCreateWill==='will') {         
+            this._willServices.assetsBeneficiary.next(this.allAssetsBeneficiary);
+          }
           this.vehicleForm.reset();
           this._route.navigate([this.forwardRouteLink]);
         }
@@ -202,22 +204,13 @@ export class MoterVehicleComponent implements OnInit {
     );
   }
   addSharesMember(value) {
-    console.log(value);
-
-    this.assetsBeneficiary = value.map((el) => {
-      return { ...el, type: 'motorVehicle' };
-    });
+    console.log(value);  
+    this.assetsBeneficiary= value.map((el)=>{return{...el,assetId:this.id}})
     console.log(this.assetsBeneficiary);
   }
 
   ngOnInit(): void {
-    this._willServices.assetsBeneficiary.subscribe((value) => {
-      this.allAssetsBeneficiary = value;
-      console.log('assetsBeneficiary', value);
-      this.slectedResidualMembers = this.allAssetsBeneficiary?.filter(
-        (el) => el.type === 'motorVehicle'
-      );
-    });
+
     this.route.queryParams.subscribe(({ id, x, y }) => {
       if (id) {
         this.id = id;
@@ -238,6 +231,12 @@ export class MoterVehicleComponent implements OnInit {
         this.forwardRouteLink = '/liabilities/securedLoan';
         this.fromCreateWill = y;
       }
+    });
+    this._willServices.assetsBeneficiary.subscribe((value) => {
+      this.allAssetsBeneficiary=value;
+      console.log("assetsBeneficiary",value);
+      this.slectedResidualMembers=this.allAssetsBeneficiary?.filter((el)=>el.assetId===this.id);
+   
     });
     this.memberServices.getMembers().subscribe(
       (result) => {

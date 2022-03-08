@@ -49,7 +49,7 @@ export class InsurancePolicyComponent implements OnInit {
   createForm() {
     this.insuranceForm = this._fb.group({
       policyName: ['', [Validators.required]],
-      policyNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      policyNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$'),Validators.maxLength(20)]],
       country: [, [Validators.required]],
       specifyOwnershipType: ['', [Validators.required]],
     });
@@ -74,7 +74,7 @@ export class InsurancePolicyComponent implements OnInit {
     },
     policyNumber: {
       required: 'Policy Number  is Required',
-
+      maxlength: 'Please Enter Valid Number',
       pattern: 'Only numeric values allowed',
     },
     country: {

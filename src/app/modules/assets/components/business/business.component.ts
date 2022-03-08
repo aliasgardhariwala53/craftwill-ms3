@@ -54,7 +54,7 @@ export class BusinessComponent implements OnInit {
   createForm() {
     this.businessForm = this._fb.group({
       businessName: ['', [Validators.required]],
-      UEN_no: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      UEN_no: ['', [Validators.required, Validators.pattern('^[0-9]*$'),Validators.maxLength(20)]],
       country: [, [Validators.required]],
       specifyOwnershipType: ['', [Validators.required]],
     });
@@ -79,7 +79,7 @@ export class BusinessComponent implements OnInit {
     },
     UEN_no: {
       required: 'UEN No. is Required',
-
+      maxlength: 'Please Enter Valid Number',
       pattern: 'Only numeric values allowed',
     },
     country: {
