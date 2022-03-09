@@ -21,7 +21,7 @@
   </div>
   
   <!--  -->
-  <div class="flex flex-row mx-5  sm:mx-16  -mb-10 sm:mt-0 sm:mb-0 z-30">
+  <div class="flex flex-row mx-5  sm:mx-16  -mb-10 sm:mt-0 sm:mb-0 z-30" >
     <div class="w-fit">
       <img
         (click)="next(1)"
@@ -42,7 +42,7 @@
   <div class="flex w-full justify-center h-full items-center sm:items-start sm:mt-20 ">
     <div
       *ngIf="step == 1"
-      class="w-full -mt-[100px] sm:mt-0  sm:w-2/3 md:w-7/12 lg:w-1/3 mx-5 sm:mx-5 "
+      class="w-full -mt-[80px] sm:mt-0  sm:w-2/3 md:w-7/12 lg:w-1/3 mx-5 sm:mx-5 "
     >
   
       <div class="text-2xl mt-10 sm:mt-0 sm:text-3xl font-[GilroySemi] sm:text-center">
@@ -61,7 +61,7 @@
           <div class="input-group1">
   
             <ng-select
-            class="custom-selector custom  w-full"
+            class="custom-selector custom w-full"
             placeholder="Write your Id type...."
             [items]="idList"
             formControlName="id_type"
@@ -194,7 +194,7 @@
             <div class="flex flex-row relative w-full">
             <input
             #x 
-            autocomplete="off"
+            autocomplete="new-password"
             type="password"
               placeholder="Password"
               formControlName="password"
@@ -248,7 +248,7 @@
         <div class="md:w-2/3 justify-center mx-auto">
           <app-button
             value="Next"
-            (myMethod)="next(3)"
+            (myMethod)="emailVerifyDisable?null:signupSendEmail()"
             id="submitButtonId"
             [arrow]="true"
             padding="px-5 py-3 sm:py-2"
@@ -259,8 +259,8 @@
       </form>
     </div>
     <div
-      *ngIf="step == 3"
-      class="w-full -mt-[80px] sm:mt-0  sm:w-2/3 md:w-7/12 lg:w-1/3 mx-5 sm:mx-5"
+      *ngIf="step == 10"
+      class="w-full -mt-[100px] sm:mt-0  sm:w-2/3 md:w-7/12 lg:w-1/3 mx-5 sm:mx-5"
     >
       <div class="text-2xl sm:text-3xl font-bold sm:text-center my-5">
         Enter your address
@@ -344,7 +344,7 @@
       class="w-full sm:w-2/3 md:w-7/12 lg:w-1/3 mx-5 sm:mx-5 mt-10 sm:mt-16"
     >
       <div class="text-2xl sm:text-3xl font-medium text-center">
-        You Are All set!
+        Email Verification link has been send to your mail....
       </div>  
    
       <div class="my-4 text-center image_set_container flex justify-center">
@@ -352,8 +352,8 @@
       </div>
       <div class="md:w-2/3 justify-center mx-auto">
         <app-button
-          value="Next"
-          (myMethod)="next(5)"
+          value="Login Now"
+          routelink="/login"
           id="submitButtonId"
           [arrow]="true"
           padding="px-5 py-3 sm:py-2"
